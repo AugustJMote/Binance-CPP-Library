@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.16)
+set(CMAKE_CXX_STANDARD 20)
+SET(CMAKE_CXX_COMPILER "/usr/bin/g++-10" CACHE STRING "C++ compiler" FORCE)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+
+project(Binance)
+
+find_package(Threads REQUIRED)
+
+find_package(Torch REQUIRED)
+FIND_PACKAGE(Boost 1.74 REQUIRED system)
+FIND_PACKAGE(OpenSSL REQUIRED)
+INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR})
+
+add_library(Connection
+    public/Connection.hpp
+    private/Connection.cpp
+)
+
+target_include_directories(
+  Connection
+  PUBLIC
+    "public"
+)
+
+add_executable(test_app
+  ${BOOST_BEAST_FILES}
+  private/main.cpp
+  private/root_certificates.hpp
+)
+
+target_link_libraries(test_app ${Boost_LIBRARIES} "${TORCH_LIBRARIES}" OpenSSL::SSL OpenSSL::Crypto pthread boost_thread)
