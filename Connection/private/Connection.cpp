@@ -10,6 +10,7 @@
 #include <functional>
 #include <iomanip>
 #include <iostream>
+#include <numeric>
 #include <string>
 #include <thread>
 
@@ -21,10 +22,12 @@ Connection::Connection(std::string APIkey, std::string APIsecret)
 {
   _endpoints = _resolver.resolve("api.binance.us", "443");
   _ssl_context.set_default_verify_paths();
+  Test(30);
 }
 
 void Connection::Test(int numTests)
 {
+  std::vector<double> latencies;
   for (int i = 0; i < numTests; ++i)
   {
     boost::asio::ssl::stream<boost::asio::ip::tcp::socket> stream(_io_context,
@@ -47,16 +50,16 @@ void Connection::Test(int numTests)
     auto after = std::chrono::steady_clock::now();
     std::string s(boost::asio::buffer_cast<const char *>(reply.data()),
                   reply.size());
-    std::cout << "IP: " << (*_endpoints).endpoint() << std::endl
-              << "Real delay: "
-              << std::chrono::duration_cast<std::chrono::microseconds>(after -
-                                                                       before)
-                         .count() /
-                     1000.0
-              << "ms" << std::endl
-              << "Message: " << s << std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    latencies.push_back(std::chrono::duration_cast<std::chrono::microseconds>(after -
+                                                                              before)
+                            .count() /
+                        1000.0);
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
   }
+  std::cout << "Successfully connected to IP: " << (*_endpoints).endpoint() << std::endl
+            << "With average latency of "
+            << std::accumulate(latencies.begin(), latencies.end(), 0.0) / numTests
+            << "ms" << std::endl;
 }
 
 void Connection::PlaceOrder()
@@ -77,10 +80,8 @@ void Connection::PlaceOrder()
       "POST /api/v3/order/test HTTP/1.1\r\nHost: api.binance.us\r\nConnection: "
       "close\r\nContent-Type: text/plain\r\nContent-Length:" +
       std::to_string(messageBody.size()) + "\r\nX-MBX-APIKEY:" + _APIkey + "\r\n\r\n" + messageBody;
-  char crequest[request.size() + 2];
-  strcpy(crequest, request.c_str());
   boost::asio::write(stream,
-                     boost::asio::buffer(crequest, std::strlen(crequest)));
+                     boost::asio::buffer(request.c_str(), request.size()));
   auto before = std::chrono::steady_clock::now();
   boost::asio::read_until(stream, reply, "}");
   auto after = std::chrono::steady_clock::now();
