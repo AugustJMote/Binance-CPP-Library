@@ -1,3 +1,5 @@
+# *Work In Progress*
+
 # Binance Trading Platform
 
 A set of libraries for trading on Binance through a C++ application.
