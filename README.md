@@ -1,5 +1,7 @@
 # *Work In Progress*
 
+Currently being ported from a previous project.
+
 # Binance CPP Library
 
 A set of libraries for trading on Binance through a C++ application.
