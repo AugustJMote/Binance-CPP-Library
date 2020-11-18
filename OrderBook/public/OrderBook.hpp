@@ -18,9 +18,8 @@
 
 typedef std::map<double, double> levelmap;
 
-class OrderBook
-{
-private:
+class OrderBook {
+ private:
   boost::asio::ip::tcp::resolver::iterator _endpoints;
   boost::asio::io_context _io_context;
   boost::asio::ip::tcp::resolver _resolver;
@@ -30,15 +29,15 @@ private:
   std::chrono::system_clock::time_point _streamStarted;
   std::thread _main;
 
-public:
+ public:
   OrderBook();
   ~OrderBook();
   bool Init(const std::string &tradingPair);
   bool Stop();
   std::map<char, levelmap> Get();
 
-private:
+ private:
   void MainThread(const std::string tradingPair);
   void ParseUpdate(const std::string &json);
-  void PrefetchDepth(std::string symbol);
+  void PrefetchDepth(const std::string symbol);
 };

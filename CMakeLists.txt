@@ -5,7 +5,6 @@ SET(CMAKE_CXX_COMPILER "/usr/bin/g++" CACHE STRING "C++ compiler" FORCE)
 set(CMAKE_CXX_FLAGS_DEBUG_INIT "-Wall")
 set(CMAKE_CXX_FLAGS_RELEASE_INIT "-Wall -Ofast")
 
-set(CMAKE_CXX_FLAGS "-fcoroutines ${CMAKE_CXX_FLAGS}")
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 project(Binance-Trading-Platform)
