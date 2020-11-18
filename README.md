@@ -18,10 +18,6 @@ See [the test app](https://github.com/Beavergus/Binance-Trading-Platform/blob/ma
 
 * [Boost](https://www.boost.org/) - Boost.Asio, Boost.Beast, and others
 
-## License
-
-This project is licensed under the MIT License
-
 ## Credits
 
 * [Binance.us API Documentation](https://github.com/binance-us/binance-official-api-docs)
