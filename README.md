@@ -18,6 +18,7 @@ See [Cmake](https://github.com/Beavergus/Binance-Trading-Platform/blob/master/CM
 * Support more endpoints
 * Better distinguish between routines and functions including using constexpr
 * encorporate enums or structs for common requests and replies
+* Facilities for monitoring API limits
 
 ## Getting Started
 
