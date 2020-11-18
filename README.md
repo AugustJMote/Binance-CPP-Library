@@ -7,6 +7,7 @@ A set of libraries for trading on Binance.us through a C++ application.
 
 ### Prerequisites
 
+Posix OS - relies on PThread.
 See [Cmake](https://github.com/Beavergus/Binance-Trading-Platform/blob/master/CMakeLists.txt) for all dependancies.
 
 ## Getting Started
