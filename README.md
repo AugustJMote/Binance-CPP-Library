@@ -15,6 +15,7 @@ See [Cmake](https://github.com/Beavergus/Binance-Trading-Platform/blob/master/CM
 * Incorporate logging instead of printing
 * Provide convient ways to export data
 * Provide a general WebSocket stream library instead of or in addition to the orderbook
+* Support more endpoints
 
 ## Getting Started
 
