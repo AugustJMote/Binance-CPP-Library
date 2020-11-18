@@ -17,6 +17,7 @@ See [Cmake](https://github.com/Beavergus/Binance-Trading-Platform/blob/master/CM
 * Provide a general WebSocket stream library instead of or in addition to the orderbook
 * Support more endpoints
 * Better distinguish between routines and functions including using constexpr
+* encorporate enums or structs for common requests and replies
 
 ## Getting Started
 
