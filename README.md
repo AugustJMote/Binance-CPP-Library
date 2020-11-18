@@ -1,13 +1,9 @@
-# *Work In Progress*
-
-Currently being ported from a previous project.
-
 # Binance CPP Library
 
-A set of libraries for trading on Binance through a C++ application.
+A set of libraries for trading on Binance.us through a C++ application.
 
 * [Connection](https://github.com/Beavergus/Binance-Trading-Platform/tree/master/Connection) provides an interface for utililizing the HTTPS API.
-* [OrderBook](https://github.com/Beavergus/Binance-Trading-Platform/tree/master/OrderBook) provides a live updating orderbook which runs in the background.
+* [OrderBook](https://github.com/Beavergus/Binance-Trading-Platform/tree/master/OrderBook) provides a live updating orderbook which runs a WebSocket feed in the background.
 
 ### Prerequisites
 
@@ -22,9 +18,13 @@ See [the test app](https://github.com/Beavergus/Binance-Trading-Platform/blob/ma
 
 * [Boost](https://www.boost.org/) - Boost.Asio, Boost.Beast, and others
 
-## Authors
+## License
 
-* **August Mote** - [LinkedIn](https://www.linkedin.com/in/augustjmote/)
+This project is licensed under the MIT License
+
+## Credits
+
+* [Binance.us API Documentation](https://github.com/binance-us/binance-official-api-docs)
 
 ## License
 
