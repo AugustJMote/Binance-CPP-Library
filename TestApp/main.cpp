@@ -30,6 +30,6 @@ int main() {
 
   // Example will fail without key and secret
   test.TestPlaceOrder("LTCBTC", "BUY", "Market", {}, 10, {}, {}, {}, {}, {}, {}, {});
-
+  
   return 0;
 }
