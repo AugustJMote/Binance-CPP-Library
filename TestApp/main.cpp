@@ -26,8 +26,10 @@ int main() {
   // Connecting to the HTTPS API
   //________________________________________
   Connection test("Your key",
-                  "Your Secret");  // Key and Secret not needed for this example
-  test.PlaceOrder("LTCBTC", "BUY", "")
+                  "Your Secret");  // Key and Secret not needed to run initialization tests
 
-      return 0;
+  // Example will fail without key and secret
+  test.TestPlaceOrder("LTCBTC", "BUY", "Market", {}, 10, {}, {}, {}, {}, {}, {}, {});
+
+  return 0;
 }

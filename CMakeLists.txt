@@ -10,7 +10,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 project(Binance-Trading-Platform)
 
 find_package(Threads REQUIRED)
-FIND_PACKAGE(Boost 1.72 REQUIRED system)
+FIND_PACKAGE(Boost 1.73 REQUIRED system)
 FIND_PACKAGE(OpenSSL REQUIRED)
 
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIRS} Connection/public)
